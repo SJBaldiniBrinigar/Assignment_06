@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pizza Order Form</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+    <link href="js/bootstrap.min.js">
+
+    <script src="js/script.js">
+    
+    </script>
+</head>
+
+<body onload="calculate_price()">
+  
+    <div class="container">
+        
+
+        <div class="jumbotron">
+           <h1>Baldini's &nbsp Pizzeria</h1>
+            <img id="logo" src="images/Order-pizza-online.png">
+        </div>
+        <nav>            
+        <h3>Price</h3><input name="txtPrice" type="text" id="txtPrice" readonly="true"</div>
+        </nav>
+        <h2>Online Order Form</h2>
+        
+
+        <h3>Delivery Information:</h3>
+        
+
+        <form class="form-horizontal" id="inForm" name="inForm">
+            <div class="form-group">
+                <label for="inName" class="col-sm-3 control-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inName" name="inName" placeholder="Name" onblur="valname()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="adType" class="col-sm-3 control-label">Address Type</label>
+                <select class="col-sm-9 control-label" id="adType">
+                    <option value="house">House</option>
+                    <option value="apt">Apartment</option>
+                        <option value="bus">Business</option>
+                        <option value="campus">Campus</option>
+                        <option value="hotel">Hotel</option>
+                        <option value="dorm">Dorm</option>
+                        <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inOther" class="col-sm-3 control-label">Other</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inOther" placeholder="Other">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputStAddress" class="col-sm-3 control-label">Street Address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inAddress" placeholder="Street Address" onblur="valad()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputRoom" class="col-sm-3 control-label">Apt., Suite or Room #</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inRoom" placeholder="Apt., Suite or Room #">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCity" class="col-sm-3 control-label">City</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inCity" placeholder="City" onblur="valcity()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputState" class="col-sm-3 control-label">State</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inState" placeholder="State" onblur="valst()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inZip" class="col-sm-3 control-label">Zip Code</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inZip" placeholder="Zip Code" onblur="valzip()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPhone" class="col-sm-3 control-label">Phone</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inPhone" placeholder="Phone" onblur="valph()">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail" class="col-sm-3 control-label">eMail</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inEmail" placeholder="Email" onblur="valem()">
+                </div>
+            </div>
+
+            <h3>Order Information:</h3>
+
+            <h4>Choose Your Crust</h4>
+
+            <div class="order-group" id="crust">
+                <div class="radio" id="handcr">
+                    <label>
+                        <input type="radio" name="crustType" id="handTossed" value="option1">Hand Tossed</label>
+                </div>
+                <div class="radio" id="thincr">
+                    <label>
+                        <input type="radio" name="crustType" id="thinCrust" value="option2">Thin Crust</label>
+                </div>
+                <div class="radio" id="nycr">
+                    <label>
+                        <input type="radio" name="crustType" id="newYork" value="option3">New York Style</label>
+                </div>
+                <div class="radio" id="gfcr">
+                    <label>
+                        <input type="radio" name="crustType" id="glutenFree" value="option4">Gluten Free</label>
+                </div>
+
+            </div>
+
+            <h4>Choose Your Cheese</h4>
+            <div class="form-group" id="cheese">
+                <label for="chooseCheese" class="col-sm-3 control-label" id="chooseCheese" onchange="calculate_price">Cheese Amount</label>
+                <select class="col-sm-9 control-label" id="chooseCheese">
+                    <option id="regCheese" value="normal">Normal: no charge</option>
+                    <option id="ltCheese" value="light">Light: no charge</option>
+                    <option id="xCheese" value="extra">Extra: + $2.99</option>
+                    <option id="dblCheese" value="double">Double: + $3.99</option>
+                </select>
+            </div>
+
+            <h4>Choose Your Sauce</h4>
+            <div class="form-group" id="sauce">
+                <label for="chooseSauce" class="col-sm-3 control-label" id="chooseSauce" onchange="calculate_price">Type of Sauce</label>
+                <select class="col-sm-9 control-label" id="chooseCheese">
+                    <option id="regTom" value="tomato">Regular Tomato: no charge</option>
+                    <option id="hrtTom" value="hearty">Hearty Tomato: + $.99</option>
+                    <option id="bbqSauce" value="bbq">BBQ Sauce: + $1.99</option>
+                </select>
+            </div>
+
+            <h4>Choose Your Toppings</h4>
+            <h5>Additional Toppings $ 0.99 Each</h5>
+
+            <div class="checkbox" id="topping">
+
+                <label>
+                    <input type="checkbox" id="pepperoni" value="pepperoni" onclick="calculate_price">Pepperoni</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="sausage" value="sausage" onclick="calculate_price">Sausage</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="ham" value="ham" onclick="calculate_price">Ham</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="bacon" value="bacon" onclick="calculate_price">Bacon</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="salami" value="salami" onclick="calculate_price">Salami</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="peppers" value="peppers" onclick="calculate_price">Peppers</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="olives" value="olives" onclick="calculate_price">Olives</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="jalep" value="jalapenos" onclick="calculate_price">Jalapenos</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="mush" value="mushrooms" onclick="calculate_price">Mushrooms</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="pine" value="pinapple" onclick="calculate_price">Pinapple</label>
+                <br>
+                <label>
+                    <input type="checkbox" id="onion" value="onion" onclick="calculate_price">Onion</label>
+                <br>
+            </div>
+            <!-- Button to confirm ordering -->
+            <button class="btn btn-danger" type="submit" onclick="calculate_price()">Finished Building Your Pizza</button>
+            <!--End of order form-->
+        </form>
+<div class="col-md-12">
+            <hr /> </div>
+       
+        <!--Begin Billing form-->
+        <h3>Billing Information:</h3>
+
+        <div class="col-md-12">
+            <label class="checkbox-inline">
+                <input type="checkbox" id="billchk" name="billchk" onclick="fillbill()"> Same as delivery information
+            </label>
+            <form id="billform" name="billform" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputName" class="col-sm-3 control-label">Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilName" name="bilName" placeholder="Name" onblur="valbname()">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputStAddress" class="col-sm-3 control-label">Street Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilAddress" placeholder="Address" onblur="valbad()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputRoom" class="col-sm-3 control-label">Apt. or Suite #</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilRoom" placeholder="Apt., Suite or Room #">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCity" class="col-sm-3 control-label">City</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilCity" placeholder="City" onblur="valbcity()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputState" class="col-sm-3 control-label">State</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilState" placeholder="State" onblur="valbst()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputZip" class="col-sm-3 control-label">Zip Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilZip" placeholder="Zip Code" onblur="valbzip()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPhone" class="col-sm-3 control-label">Phone</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilPhone" placeholder="Phone" onblur="valbph()">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-3 control-label">eMail</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="bilEmail" placeholder="Email" onblur="valbem()">
+                            </div>
+                        </div>
+
+                        <!--New section of form for credit cards -->
+                        <div class="form-group">
+                            <label for="ccname" class="col-sm-3 control-label">Name on card</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="ccname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ccard" class="col-sm-3 control-label">Card number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="ccnum"  onblur="valccn(); cctype(cct); ckLuhn(crcn);">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ccmonth" class="col-sm-4 control-label">Expiration</label>
+                            <select class="col-sm-3 control-label" id="ccmonth">
+                               <option>select month</option>
+                                <option id="01">01</option>
+                                <option id="02">02</option>
+                                <option id="03">03</option>
+                                <option id="04">04</option>
+                                <option id="05">05</option>
+                                <option id="06">06</option>
+                                <option id="07">07</option>
+                                <option id="08">08</option>
+                                <option id="09">09</option>
+                                <option id="10">10</option>
+                                <option id="11">11</option>
+                                <option id="12">12</option>
+                            </select>
+                            <select class="col-sm-3 control-label" id="ccyear" onblur="valdt()">
+                               <option>select year</option>
+                                <option id="15">15</option>
+                                <option id="16">16</option>
+                                <option id="17">17</option>
+                                <option id="18">18</option>
+                                <option id="19">19</option>
+                                <option id="20">20</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvc" class="col-sm-3 control-label">CVC code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="cvc" onblur="valcvc()">
+                            </div>
+                        </div>
+                 </form>        
+           </div>
+ <div class="col-md-12">
+            <hr /> </div>
+            <div>
+    <footer class="footer">
+        <p>&copy; FEWD 2 SJB Online Pizza Company 2015</p>
+    </footer>
+    </div>
+</div>
+
+</body>
+
+</html>
