@@ -131,8 +131,8 @@
 
             <h4>Choose Your Cheese</h4>
             <div class="form-group" id="cheese">
-                <label for="chooseCheese" class="col-sm-3 control-label" id="chooseCheese" onchange="calculate_price">Cheese Amount</label>
-                <select class="col-sm-9 control-label" id="chooseCheese">
+                <label for="chooseCheese" class="col-sm-3 control-label" >Cheese Amount</label>
+                <select class="col-sm-9 control-label" id="chooseCheese" onchange="calculate_price()">
                     <option id="regCheese" value="normal">Normal: no charge</option>
                     <option id="ltCheese" value="light">Light: no charge</option>
                     <option id="xCheese" value="extra">Extra: + $2.99</option>
@@ -142,8 +142,8 @@
 
             <h4>Choose Your Sauce</h4>
             <div class="form-group" id="sauce">
-                <label for="chooseSauce" class="col-sm-3 control-label" id="chooseSauce" onchange="calculate_price">Type of Sauce</label>
-                <select class="col-sm-9 control-label" id="chooseCheese">
+                <label for="chooseSauce" class="col-sm-3 control-label">Type of Sauce</label>
+                <select class="col-sm-9 control-label" id="chooseSauce" onchange="calculate_price()">
                     <option id="regTom" value="tomato">Regular Tomato: no charge</option>
                     <option id="hrtTom" value="hearty">Hearty Tomato: + $.99</option>
                     <option id="bbqSauce" value="bbq">BBQ Sauce: + $1.99</option>
@@ -156,41 +156,41 @@
             <div class="checkbox" id="topping">
 
                 <label>
-                    <input type="checkbox" id="pepperoni" value="pepperoni" onclick="calculate_price">Pepperoni</label>
+                    <input type="checkbox" id="pepperoni" value="pepperoni" onclick="calculate_price()">Pepperoni</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="sausage" value="sausage" onclick="calculate_price">Sausage</label>
+                    <input type="checkbox" id="sausage" value="sausage" onclick="calculate_price()">Sausage</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="ham" value="ham" onclick="calculate_price">Ham</label>
+                    <input type="checkbox" id="ham" value="ham" onclick="calculate_price()">Ham</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="bacon" value="bacon" onclick="calculate_price">Bacon</label>
+                    <input type="checkbox" id="bacon" value="bacon" onclick="calculate_price()">Bacon</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="salami" value="salami" onclick="calculate_price">Salami</label>
+                    <input type="checkbox" id="salami" value="salami" onclick="calculate_price()">Salami</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="peppers" value="peppers" onclick="calculate_price">Peppers</label>
+                    <input type="checkbox" id="peppers" value="peppers" onclick="calculate_price()">Peppers</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="olives" value="olives" onclick="calculate_price">Olives</label>
+                    <input type="checkbox" id="olives" value="olives" onclick="calculate_price()">Olives</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="jalep" value="jalapenos" onclick="calculate_price">Jalapenos</label>
+                    <input type="checkbox" id="jalep" value="jalapenos" onclick="calculate_price()">Jalapenos</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="mush" value="mushrooms" onclick="calculate_price">Mushrooms</label>
+                    <input type="checkbox" id="mush" value="mushrooms" onclick="calculate_price()">Mushrooms</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="pine" value="pinapple" onclick="calculate_price">Pinapple</label>
+                    <input type="checkbox" id="pine" value="pinapple" onclick="calculate_price()">Pinapple</label>
                 <br>
                 <label>
-                    <input type="checkbox" id="onion" value="onion" onclick="calculate_price">Onion</label>
+                    <input type="checkbox" id="onion" value="onion" onclick="calculate_price()">Onion</label>
                 <br>
             </div>
-            <!-- Button to confirm ordering -->
-            <button class="btn btn-danger" type="submit" onclick="calculate_price()">Finished Building Your Pizza</button>
+            <!-- Button to confirm selections -->
+            <div type=button class="btn btn-warning" id="goodOrder" onclick="calculate_price(), message()">Finished Building Pizza</div>
             <!--End of order form-->
         </form>
 <div class="col-md-12">

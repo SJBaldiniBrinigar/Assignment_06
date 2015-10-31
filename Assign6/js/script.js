@@ -134,23 +134,28 @@ function valem() {
      
 }
 
- //Progammatically add drop-down to hand tossed crust option to choose size after choosing crust type. How do I add "show" to this when the radio button for hand tossed crust is selected?  
+ //Progammatically add drop-down to hand tossed crust option to choose size after choosing crust type. 
 
-//function hcrust() {
-//    'use strict';
-//    //var hcrad = document.getElementById('handTossed').checked;
-//    var handcr = document.getElementById('handcr');
-//    var hcarray = ["Small = $9.99", "Medium = $12.99", "Large = $14.99"]
-//    var hcSelectList = document.createElement('hcSelect');
-//    handcr.appendChild(hcSelectList);
-//    for (var i = 0; i < hcarray.length, i++) {
-//    var hcoption = document.createElement("hcoption");
-//    hcoption.value = hcarray[i];
-//    hcoption.text = hcarray[i];
-//    hcSelectList.appendChild(hcoption);
-//    }
+//var sizeSpec = {
+//    handTossed: [
+//        {v: 'small', p: 9.99},
+//        {v: 'medium', p: 12.99},
+//        {v: 'large', p: 14.99}
+//    ],
+//    thinCrust: [
+//        {v: 'medium', p: 11.99},
+//        {v: 'large', p: 13.99}
+//    ],
+//    newYork: [
+//        {v: 'large', p: 16.99},
+//        {v: 'extra large', p: 19.99}
+//    ],
+//    glutenFree: [
+//        {v: 'small', p: 10.99}
+//    ]
 //}
-//    
+
+
  
 function calculate_price() {
     'use strict';
@@ -159,66 +164,77 @@ function calculate_price() {
     var sauce_obj = document.getElementById('chooseSauce');
     var selection = obj.options[obj.selectedIndex].value;
     var sauce_selection = sauce_obj.options[sauce_obj.selectedIndex].value; // Make new sauce selection variable
+    //window.alert("Selection is " + selection);
+    //window.alert("Sauce_Selection is " + sauce_selection);
+
 
 // Calculate cost of cheese
-    if (selection === 'double') {
-        price = price + 2.99;
-    }
+    
     if (selection === 'extra') {
-        price = price + 3.99;
+        price += 2.99;
+    }
+    if (selection === 'double') {
+        price += 3.99;
     }
 // Calculate cost of sauce if the selection == sauce, increase price accordingly
     
     
     if (sauce_selection === 'hearty') {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (sauce_selection === 'bbq') {
-        price = price + 1.99;
+        price += 1.99;
     }
 
 // Calculate cost of toppings 
 
     if (document.getElementById('pepperoni').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('sausage').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('ham').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('bacon').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('salami').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('peppers').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('olives').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
-    if (document.getElementById('jalap').checked === true) {
-        price = price + 0.99;
+    if (document.getElementById('jalep').checked === true) {
+        price += 0.99;
     }
     if (document.getElementById('mush').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('pine').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (document.getElementById('onion').checked === true) {
-        price = price + 0.99;
+        price += 0.99;
     }
     if (price === 0) {
         document.getElementById('txtPrice').value = "$ 0.00";
     } else {
-        document.getElementById('txtPrice').value = "$" + price;
+        document.getElementById('txtPrice').value = "$" + Math.round(price * 100) / 100;
+//        window.alert("Selection is " + selection);
+//        window.alert("Sauce_Selection is " + sauce_selection);
+//        window.alert("Price is " + price);
     }
 }
 
+function message() {
+    'use strict';
+    window.confirm("Are you sure you are ready to place your order?");
+}
 
 
 //Copy delivery form info into billing form when "same as delivery" is checked.
